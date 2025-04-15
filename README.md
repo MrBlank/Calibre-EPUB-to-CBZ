@@ -35,7 +35,3 @@ The converted CBZ files will appear in your Calibre library alongside the origin
 This plugin is provided "as is" without warranty of any kind. Use at your own risk. The authors are not responsible for any damage or data loss that may occur through the use of this plugin.
 
 This tool is intended for converting legally obtained EPUB files that you own. Please respect copyright laws and only convert materials you have the right to access.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
