@@ -9,7 +9,7 @@ import re
 class EPUBToCBZ(OutputFormatPlugin):
     name = "EPUB to CBZ"
     author = "Josh Nichols"
-    version = (0, 0, 1)
+    version = (1, 0, 0)
     file_type = "cbz"
     commit_name = "cbz_output"
 
