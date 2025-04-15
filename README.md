@@ -21,6 +21,8 @@ This plugin allows you to easily convert your EPUB comics and manga to CBZ forma
 
 The converted CBZ files will appear in your Calibre library alongside the original EPUB files.
 
+Other eBook file types may work. Try it and see. 
+
 ## Notes
 
 - The plugin preserves image quality during conversion
