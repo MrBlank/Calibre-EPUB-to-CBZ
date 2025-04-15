@@ -1,6 +1,6 @@
 # EPUB to CBZ - Calibre Plugin
 
-A Calibre plugin to convert EPUB files to CBZ (Comic Book ZIP) format. This plugin allows you to easily convert your EPUB comics and manga to CBZ format directly within Calibre.
+This plugin allows you to easily convert your EPUB comics and manga to CBZ format directly within Calibre.
 
 ## Installation
 
