@@ -6,7 +6,7 @@ A Calibre plugin to convert EPUB files to CBZ (Comic Book ZIP) format. This plug
 
 1. Download the latest `EPUBToCBZ.zip` from the [Releases page](https://github.com/MrBlank/calibre-epub-to-cbz/releases/latest)
 2. Open Calibre
-3. Go to Preferences (⌘ + P on macOS)
+3. Go to Preferences (⌘ + P on macOS, or Ctrl + P on Windows)
 4. Click on "Plugins" under "Advanced"
 5. Click "Load plugin from file"
 6. Select the downloaded `EPUBToCBZ.zip` file
@@ -15,7 +15,7 @@ A Calibre plugin to convert EPUB files to CBZ (Comic Book ZIP) format. This plug
 ## Usage
 
 1. Select one or more EPUB books in your Calibre library
-2. Right-click and select "Convert books" > "Convert individually" (or press ⌘ + E on macOS)
+2. Right-click and select "Convert books" > "Convert individually" (or press ⌘ + E on macOS, Ctrl + E on Windows)
 3. In the top-right corner, select "CBZ" as the output format
 4. Click "OK" to start the conversion
 
