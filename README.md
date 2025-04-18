@@ -2,6 +2,8 @@
 
 This plugin allows you to easily convert your EPUB comics and manga to CBZ format directly within Calibre.
 
+> Found a bug with some EPUBs that breaks the processing and you only end up with a cover. Working on a fix.
+
 ## Installation
 
 1. Download the latest `EPUBToCBZ.zip` from the [Releases page](https://github.com/MrBlank/calibre-epub-to-cbz/releases/latest)
