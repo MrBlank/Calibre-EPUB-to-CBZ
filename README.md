@@ -1,3 +1,5 @@
+> Note: this is unmaintained and doesn't work with some EPUB comics. Try my other CBZ conversion tools instead: https://github.com/MrBlank/Python-CBZ-Tools
+
 # EPUB to CBZ - Calibre Plugin
 
 This plugin allows you to easily convert your EPUB comics and manga to CBZ format directly within Calibre.
