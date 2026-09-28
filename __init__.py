@@ -4,12 +4,13 @@ from calibre.utils.zipfile import ZipFile
 from os import path
 from lxml import etree
 import re
+import posixpath
 
 
 class EPUBToCBZ(OutputFormatPlugin):
     name = "EPUB to CBZ"
     author = "Josh Nichols"
-    version = (1, 0, 0)
+    version = (1, 0, 1)
     file_type = "cbz"
     commit_name = "cbz_output"
 
@@ -63,7 +64,9 @@ class EPUBToCBZ(OutputFormatPlugin):
                             src = img.get('src')
                             if src:
                                 if not src.startswith('/'):
-                                    src = path.normpath(path.join(path.dirname(href), src))
+                                    src = posixpath.normpath(posixpath.join(posixpath.dirname(href), src))
+                                else:
+                                    src = src.lstrip('/')
                                 img_item = oeb_book.manifest.hrefs.get(src)
                                 if img_item and img_item.media_type.startswith('image'):
                                     potential_covers.append(('guide', img_item))
@@ -74,6 +77,9 @@ class EPUBToCBZ(OutputFormatPlugin):
         # Method 4: Try item ID conventions and manifest items
         if not cover_image:
             for item in oeb_book.manifest:
+                # Skip the raster cover calibre generates from the first page
+                if 'calibre_raster_cover' in (item.href or '').lower():
+                    continue
                 # Check if it's an image and either has 'cover' in id/href or is the only image in manifest
                 if (item.media_type.startswith('image') and
                     hasattr(item, 'id') and
@@ -140,18 +146,17 @@ class EPUBToCBZ(OutputFormatPlugin):
                             if src:
                                 # Handle relative paths
                                 if not src.startswith('/'):
-                                    # First try relative to current directory
-                                    src_try = path.join(path.dirname(item.href), src)
+                                    # Manifest hrefs are always forward-slash
+                                    # separated, so resolve with posixpath.
+                                    # os.path uses backslashes on Windows and
+                                    # the lookup then silently fails.
+                                    src_try = posixpath.normpath(posixpath.join(posixpath.dirname(item.href), src))
                                     img_item = oeb_book.manifest.hrefs.get(src_try)
                                     if not img_item:
-                                        # If not found, try normalizing the path
-                                        src_try = path.normpath(path.join(path.dirname(item.href), src))
-                                        img_item = oeb_book.manifest.hrefs.get(src_try)
-                                        if not img_item:
-                                            # If still not found, try the raw src
-                                            img_item = oeb_book.manifest.hrefs.get(src)
+                                        # If still not found, try the raw src
+                                        img_item = oeb_book.manifest.hrefs.get(src)
                                 else:
-                                    img_item = oeb_book.manifest.hrefs.get(src)
+                                    img_item = oeb_book.manifest.hrefs.get(src.lstrip('/'))
                                 
                                 oeb_book.logger.info(f"Found image source: {src}")
                                 # Only process raster image types supported by CBZ
